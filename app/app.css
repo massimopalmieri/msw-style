@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+	@apply bg-white dark:bg-zinc-900;
+
+	@media (prefers-color-scheme: dark) {
+		color-scheme: dark;
+	}
+}
+
+.grecaptcha-badge {
+	visibility: hidden !important;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.animate-gradient {
+	background-size: 200% auto;
+	animation: gradient 8s linear infinite;
+}
+
+@keyframes snowfall {
+	0% {
+		transform: translate3d(0, -10vh, 0);
+		opacity: 0;
+	}
+	10% {
+		opacity: var(--opacity);
+	}
+	90% {
+		opacity: var(--opacity);
+	}
+	100% {
+		transform: translate3d(calc(var(--drift) * 1vw), 110vh, 0);
+		opacity: 0;
+	}
+}
+
+.snow {
+	position: fixed;
+	left: var(--left);
+	top: -5vh;
+	width: var(--size);
+	height: var(--size);
+	background: white;
+	border-radius: 50%;
+	opacity: var(--opacity);
+	filter: blur(var(--blur));
+	animation: snowfall var(--duration) var(--delay) linear infinite;
+}
